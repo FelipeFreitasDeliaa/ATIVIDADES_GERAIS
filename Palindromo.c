@@ -52,7 +52,7 @@ int main() {
     }
     encontra_maior_palindromo(sequencia, &inicio_palindromo, &fim_palindromo, quantidade);
 
-    printf("\nO maior palindromo e:");
+    printf("\nO maior palindromo e: ");
     for (int i = inicio_palindromo; i <= fim_palindromo; i++) {
         printf ("%c", sequencia[i]);
     }
