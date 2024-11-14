@@ -3,6 +3,7 @@ PROCESSO SELETIVO - CODELAB 2024*/
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int eh_palindromo(char sequencia[], int inicio, int fim) {
     while (inicio < fim) {
@@ -48,11 +49,16 @@ int main() {
             sequencia[i] = '\0';
             break;
         }
+        if (!isalnum(sequencia[i]) && sequencia[i] != ' ') {
+            printf("\nErro: Entrada deve conter apenas letras e numeros.\n");
+            return 1;
+        }
         quantidade++;
     }
+    
     encontra_maior_palindromo(sequencia, &inicio_palindromo, &fim_palindromo, quantidade);
 
-    printf("\nO maior palindromo e: ");
+    printf("\nO maior palindromo e:");
     for (int i = inicio_palindromo; i <= fim_palindromo; i++) {
         printf ("%c", sequencia[i]);
     }
