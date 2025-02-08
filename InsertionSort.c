@@ -1,6 +1,3 @@
-//Felipe Freitas D' Elia
-//RA: 176284
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h> //clock(), CLOCKS_PER_SEC e clock_t
