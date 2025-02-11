@@ -196,7 +196,7 @@ Ao final, a função retorna item, que foi o índice da fila
 que foi removido
 */
 
-int remover(FILA* F){
+int remover_da_fila(FILA* F){
     int item;
     if (ehVazia(F)){
         printf ("Fila está vazia");
@@ -231,9 +231,33 @@ void imprimir_fila(FILA* F){
     }
 }
 
-void busca_em_largura (){
-    
+/*
+            BUSCA EM LARGURA
+*/
 
+void busca_em_largura (GRAFO* grafo, int vertice_inicial){
+    FILA* F = criar_fila();
+
+    grafo -> vizitados[vertice_inicial] = 1;
+    adicionar_na_fila(F, vertice_inicial);
+
+    while(!ehVazia(F)){
+        imprimir_fila(F);
+        int vertice_atual = remover_da_fila(F);
+        printf ("Visitado %d\n", vertice_atual);
+
+        NO* aux = grafo -> lista_de_adj[vertice_atual];
+
+        while (aux){
+            int vertice_adj = aux -> vertice;
+
+            if(grafo -> vizitados[vertice_adj] == 0){
+                grafo -> vizitados[vertice_adj] = 1;
+                adicionar_na_fila(F, vertice_adj);
+            }
+            aux = aux -> prox;
+        }
+    }
 }
 
 int main() {
@@ -257,7 +281,7 @@ int main() {
 
     imprimir_grafo(G);
 
-    busca_em_largura(G);
+    busca_em_largura(G, 0);
 
     liberar_grafo(G);
     return 0;
