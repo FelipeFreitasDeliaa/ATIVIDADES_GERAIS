@@ -244,7 +244,7 @@ void busca_em_largura (GRAFO* grafo, int vertice_inicial){
     while(!ehVazia(F)){
         imprimir_fila(F);
         int vertice_atual = remover_da_fila(F);
-        printf ("Visitado %d\n", vertice_atual);
+        printf ("Visitado: %d\n", vertice_atual);
 
         NO* aux = grafo -> lista_de_adj[vertice_atual];
 
@@ -281,7 +281,11 @@ int main() {
 
     imprimir_grafo(G);
 
-    busca_em_largura(G, 0);
+    printf ("\nDê um vértice inicial para iniciar a busca em largura:\n");
+    int vertice_inicial;
+    scanf ("%d", &vertice_inicial);
+
+    busca_em_largura(G, vertice_inicial);
 
     liberar_grafo(G);
     return 0;
